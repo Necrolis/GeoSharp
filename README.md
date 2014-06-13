@@ -6,9 +6,9 @@ Based on the awesome Java lib by AReallyGoodName: https://github.com/AReallyGood
 
 ## Requirements
 
-This library is built for .Net 4, however it should work fine with 3.5 and Mono.
-The data that is fed in needs to be in the geoname format as described [here](http://download.geonames.org/export/dump/readme.txt).
-[Here](http://download.geonames.org/export/dump/) you'll find various sets of data to use for the geocoding.
+- This library is built for .Net 4, however it should work fine with 3.5 and Mono.
+- The data that is fed in needs to be in the `geoname` format as described [here](http://download.geonames.org/export/dump/readme.txt).
+- [Here](http://download.geonames.org/export/dump/) you'll find various sets of formatted data to use for the reverse geocoding.
 
 ## Performance
 
