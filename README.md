@@ -12,7 +12,7 @@ The data that is fed in needs to be in the geoname format as described [here](ht
 
 ## Performance
 
-The look ups are very fast (`O(logn)`) however building the initial KD-Tree is not so fast (`O(kn * logn)`),
+The look ups are very fast, `O(logn)`, however building the initial KD-Tree is not so fast, `O(kn * logn)`),
 so pre-selecting your initial datasets and filtering out minor places can be used to improve load speed and reduce
 memory usage.
 
@@ -20,7 +20,7 @@ memory usage.
 
 Load a database from a file
 ```cs
-GeoSharp.ReverseGeoCode geocode = new GeoSharp.ReverseGeoCode(@"C:\Users\Lorenzo\Desktop\allCountries.txt", true);
+GeoSharp.ReverseGeoCode geocode = new GeoSharp.ReverseGeoCode(@"C:\allCountries.txt", true);
 Console.WriteLine(geocode.NearestPlaceName(40.730885, -73.997383));
 ```
 
