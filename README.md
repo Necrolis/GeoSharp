@@ -28,7 +28,7 @@ Load a database from a `Stream`
 ```cs
 using (MemoryStream ms = new MemoryStream(MemoryDB))
 {
-	GeoSharp.ReverseGeoCode geocode = new GeoSharp.ReverseGeoCode(, true);
+	GeoSharp.ReverseGeoCode geocode = new GeoSharp.ReverseGeoCode(ms, true);
 	Console.WriteLine(geocode.NearestPlaceName(40.730885, -73.997383));
 }
 ```
