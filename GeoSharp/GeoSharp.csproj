@@ -40,8 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GeoCode.cs" />
+    <Compile Include="GeoDBOptimize.cs" />
     <Compile Include="GeoName.cs" />
-    <Compile Include="GeoSharp.cs" />
+    <Compile Include="IPReverseGeoCode.cs" />
+    <Compile Include="ReverseGeoCode.cs" />
     <Compile Include="KDTree\IKDComparator.cs" />
     <Compile Include="KDTree\KDNode.cs" />
     <Compile Include="KDTree\KDTree.cs" />

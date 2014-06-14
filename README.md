@@ -16,6 +16,8 @@ The look ups are very fast, `O(logn)`, however building the initial KD-Tree is n
 so pre-selecting your initial datasets and filtering out minor places can be used to improve load speed and reduce
 memory usage.
 
+Filter of data can be done offline using the `GeoDBOptimize` class to create tailored `geoname` tables.
+
 ## Usage
 
 Load a database from a file

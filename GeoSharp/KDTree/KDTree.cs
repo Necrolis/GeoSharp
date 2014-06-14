@@ -41,7 +41,7 @@ namespace GeoSharp.KDTree
 
             if (Other != null)
             {
-                if (Node.Location.AxisSquaredDistance(Best.Location, (Axis)(Depth % 3)) < Best.Location.SquaredDistance(Search))
+                if (Other.Location.AxisSquaredDistance(Best.Location, (Axis)((Depth + 1) % 3)) < Best.Location.SquaredDistance(Search))
                 {
                     KDNode<T> PossibleBest = FindNearest(Other, Search, Depth + 1);
                     if (PossibleBest.Location.SquaredDistance(Search) < Best.Location.SquaredDistance(Search))

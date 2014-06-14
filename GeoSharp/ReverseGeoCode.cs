@@ -5,6 +5,10 @@ using System.IO;
 //All the geocoding data can be gotten from: http://download.geonames.org/export/dump/
 namespace GeoSharp
 {
+    /*
+     * Hmmm, might be nice to get in a simple version that does country->regoin/province->district/municipality/prefecture
+     * probably with a nice BVH using a decemated representation from OSM
+     */
     public class ReverseGeoCode
     {
         private KDTree<GeoName> Tree;
@@ -27,6 +31,11 @@ namespace GeoSharp
             return Tree.FindNearest(new GeoName(Latitude, Longitude)).Name;
         }
 
+        public GeoName NearestPlace(double Latitude, double Longitude)
+        {
+            return Tree.FindNearest(new GeoName(Latitude, Longitude));
+        }
+
         private void Initialize(Stream Input, bool MajorPlacesOnly)
         {
             List<GeoName> Places = new List<GeoName>();
@@ -36,7 +45,7 @@ namespace GeoSharp
                 while (!db.EndOfStream && (Line = db.ReadLine()) != null)
                 {
                     var Place = new GeoName(Line);
-                    if (!MajorPlacesOnly || Place.IsMajorPlace)
+                    if (!MajorPlacesOnly || Place.FeatureClass != GeoFeatureClass.City)
                         Places.Add(Place);
                 }
             }
