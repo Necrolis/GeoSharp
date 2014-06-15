@@ -12,11 +12,11 @@ Based on the awesome Java lib by AReallyGoodName: https://github.com/AReallyGood
 
 ## Performance
 
-The look ups are very fast, `O(logn)`, however building the initial KD-Tree is not so fast, `O(kn * logn)`),
-so pre-selecting your initial datasets and filtering out minor places can be used to improve load speed and reduce
+The look ups are very fast, `O(logn)`, however building the initial KD-Tree is not so fast, `O(kn * logn)`,
+so pre-selecting your datasets and filtering out places or areas that are not of interest (like water bodies) can be used to improve load speed and reduce
 memory usage.
 
-Filter of data can be done offline using the `GeoDBOptimize` class to create tailored `geoname` tables.
+Filtering of data can be done offline using the `GeoDBOptimize` class to create tailored `geoname` tables.
 
 ## Usage
 
@@ -37,4 +37,4 @@ using (MemoryStream ms = new MemoryStream(MemoryDB))
 
 ## License
 
-Licensed under **LGPL 2.1**
+Licensed under **LGPL 2.1** with an exception intended for Android users to allow static linking of the unmodified publicly distributed version of the Library, see LICENSE_EXCEPTION for details
