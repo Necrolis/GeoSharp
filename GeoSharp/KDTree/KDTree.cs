@@ -30,7 +30,7 @@ namespace GeoSharp.KDTree
 
         private KDNode<T> FindNearest(KDNode<T> Node, T Search, int Depth)
         {
-            int Direction = Search.Comparator((Axis)(Depth % 3)).Compare(Node.Location, Search);
+            int Direction = Search.Comparator((Axis)(Depth % 3)).Compare(Search, Node.Location);
             KDNode<T> Next = (Direction < 0) ? Node.Left : Node.Right;
             KDNode<T> Other = (Direction < 0) ? Node.Right : Node.Left;
             KDNode<T> Best = (Next == null) ? Node : FindNearest(Next, Search, Depth + 1);
@@ -41,7 +41,7 @@ namespace GeoSharp.KDTree
 
             if (Other != null)
             {
-                if (Other.Location.AxisSquaredDistance(Best.Location, (Axis)((Depth + 1) % 3)) < Best.Location.SquaredDistance(Search))
+                if (Other.Location.AxisSquaredDistance(Search, (Axis)(Depth % 3)) < Best.Location.SquaredDistance(Search))
                 {
                     KDNode<T> PossibleBest = FindNearest(Other, Search, Depth + 1);
                     if (PossibleBest.Location.SquaredDistance(Search) < Best.Location.SquaredDistance(Search))
