@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
+using System.Text;
 
 namespace GeoSharp
 {
@@ -20,6 +19,18 @@ namespace GeoSharp
         public static PointD operator -(PointD a, PointD b)
         {
             return new PointD(a.X - b.X, a.Y - b.Y);
+        }
+    }
+
+    public struct OptStats
+    {
+        public long RecordsIn;
+        public long RecordsOut;
+
+        public OptStats(long In, long Out)
+        {
+            RecordsIn = In;
+            RecordsOut = Out;
         }
     }
 
@@ -83,11 +94,11 @@ namespace GeoSharp
 
         public delegate bool Filter(string[] Fields);
 
-        public static Tuple<long, long> OptimizeDatabase(Stream Input, Stream Output, List<GeoFeatureClass> FeatureClassFilter, List<string> CountryFilter, List<List<PointD>> AreaFilter)
+        public static OptStats OptimizeDatabase(Stream Input, Stream Output, List<GeoFeatureClass> FeatureClassFilter, List<string> CountryFilter, List<List<PointD>> AreaFilter)
         {
             long RecordsIn = 0;
             long RecordsOut = 0;
-            string CountryFilterCompiled = string.Join("|", CountryFilter);
+            string CountryFilterCompiled = string.Join("|", CountryFilter.ToArray());
             StringBuilder sb = new StringBuilder();
             foreach (var f in FeatureClassFilter)
                 sb.Append(GeoName.ClassToCode(f));
@@ -111,14 +122,14 @@ namespace GeoSharp
                 }
             }
 
-            return Tuple.Create(RecordsIn, RecordsOut);
+            return new OptStats(RecordsIn, RecordsOut);
         }
 
-        public static Tuple<long, long> OptimizeDatabase(Stream Input, Stream Output, List<GeoFeatureClass> FeatureClassFilter, List<string> CountryFilter)
+        public static OptStats OptimizeDatabase(Stream Input, Stream Output, List<GeoFeatureClass> FeatureClassFilter, List<string> CountryFilter)
         {
             long RecordsIn = 0;
             long RecordsOut = 0;
-            string CountryFilterCompiled = string.Join("|", CountryFilter);
+            string CountryFilterCompiled = string.Join("|", CountryFilter.ToArray());
             StringBuilder sb = new StringBuilder();
             foreach (var f in FeatureClassFilter)
                 sb.Append(GeoName.ClassToCode(f));
@@ -142,10 +153,10 @@ namespace GeoSharp
                 }
             }
 
-            return Tuple.Create(RecordsIn, RecordsOut);
+            return new OptStats(RecordsIn, RecordsOut);
         }
 
-        public static Tuple<long, long> OptimizeDatabase(Stream Input, Stream Output, Filter Filter)
+        public static OptStats OptimizeDatabase(Stream Input, Stream Output, Filter Filter)
         {
             long RecordsIn = 0;
             long RecordsOut = 0;
@@ -167,7 +178,7 @@ namespace GeoSharp
                 }
             }
 
-            return Tuple.Create(RecordsIn, RecordsOut);
+            return new OptStats(RecordsIn, RecordsOut);
         }
     }
 }

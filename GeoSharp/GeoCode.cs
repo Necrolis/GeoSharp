@@ -6,7 +6,7 @@ using System.IO;
 
 namespace GeoSharp
 {
-    private class GeoCode
+    class GeoCode
     {
         /* I'm torn between using OSM data, regional heirachical polygons (though this is more for the reverse lookups) or the geoname stuff
          * For now I'm going to just focus on parsing out the names to allow for non-strict structuring etc.

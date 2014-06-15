@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GeoSharp
 {
-    private class IPReverseGeoCode
+    class IPReverseGeoCode
     {
 
     }
