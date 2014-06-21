@@ -3,6 +3,7 @@ GeoSharp
 
 An offline Geocoding library for .Net coded in C#.
 Based on the awesome Java lib by AReallyGoodName: https://github.com/AReallyGoodName/OfflineReverseGeocode
+You may also be interested in https://github.com/RobThree/NGeoNames (also under MIT).
 
 ## Requirements
 
@@ -37,4 +38,4 @@ using (MemoryStream ms = new MemoryStream(MemoryDB))
 
 ## License
 
-Licensed under **LGPL 2.1** with an exception intended for Android users to allow static linking of the unmodified publicly distributed version of the Library, see LICENSE_EXCEPTION for details
+Licensed under The **MIT** License.
